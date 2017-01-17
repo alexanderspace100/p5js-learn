@@ -1,29 +1,23 @@
-var on = false;
 
 function setup() {
   createCanvas(1060, 400);
 }
 
 function draw() {
-  if (on) {
-    background(40, 105, 70);
-  } else {
-    background(0);
-  }
-
-  stroke(255);
+  background(0);
   strokeWeight(4);
-  noFill();
+  stroke(255);
 
-  if (mouseX > 250 && mouseX < 350 && mouseY > 150 && mouseY < 250) {
-    fill(155, 40, 175);
+  var x = 0;
+
+  while(x < width) {
+    fill(0, 155, 230);
+    ellipse(x, 150, 25, 25);
+    x += 50;
   }
-  rectMode(CENTER);
-  rect(300, 200, 100, 100);
-}
 
-function mousePressed() {
-  if (mouseX > 250 && mouseX < 350 && mouseY > 150 && mouseY < 250) {
-    on = !on;
+  for (var y = 0; y < width; y += 50){
+    fill(200, 15, 180);
+    ellipse(y, 300, 25, 25);
   }
 }
