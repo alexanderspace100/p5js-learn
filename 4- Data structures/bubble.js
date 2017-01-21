@@ -2,12 +2,25 @@ function Bubble(x, y) {
   this.x = x;
   this.y = y;
   this.col = color(255, 100);
-  this.lifespan = 255;
+  this.r = 48;
+
+  this.changeColor = function() {
+    this.col = color(random(255), random(255), random(255));
+  }
+
+  this.intersects = function(other){
+    var d = dist(this.x, this.y, other.x, other.y);
+    if (d < this.r + other.r) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   this.display = function() {
     noStroke();
-    fill(255, this.lifespan);
-    ellipse(this.x, this.y, 36, 36);
+    fill(this.col);
+    ellipse(this.x, this.y, this.r * 2, this.r * 2);
   }
 
   this.update = function() {

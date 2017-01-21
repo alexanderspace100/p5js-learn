@@ -1,26 +1,21 @@
-var bubbles = [];
+var b1;
+var b2;
 
 function setup() {
   createCanvas(1020, 600);
-  // for (var i = 0; i < 70; i++) {
-  //   var x = random(width);
-  //   var y = random(height);
-  //   bubbles.push(new Bubble(x, y));
-  // }
-}
-
-function mousePressed() {
-  var b = new Bubble(mouseX, mouseY);
-  bubbles.push(b);
+  b1 = new Bubble(250, 200);
+  b2 = new Bubble(350, 200);
 }
 
 function draw() {
   background(180);
-  for (var i = bubbles.length-1; i >=0; i--) {
-    bubbles[i].update();
-    bubbles[i].display();
-    if (bubbles[i].lifespan < 0) {
-      bubbles.splice(i, 1);
-    }
+  b1.update();
+  b2.update();
+  b1.display();
+  b2.display();
+
+  if (b1.intersects(b2)) {
+    b1.changeColor();
+    b2.changeColor();
   }
 }
